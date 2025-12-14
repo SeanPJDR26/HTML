@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --dark-bg: #2c3e50;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://picsum.photos/seed/hero/1920/1080.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1s ease 0.4s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 1s ease 0.6s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .skill-item i {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--secondary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: var(--white);
+            border: 4px solid var(--secondary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item.left {
+            left: 0;
+        }
+
+        .timeline-item.right {
+            left: 50%;
+        }
+
+        .timeline-item.right::after {
+            left: -17px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .portfolio-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-content h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .portfolio-content p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: var(--light-bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .btn-portfolio {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .btn-portfolio:hover {
+            text-decoration: underline;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .pricing-table {
+            margin-top: 4rem;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Popular';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .pricing-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .price span {
+            font-size: 1rem;
+            font-weight: normal;
+        }
+
+        .features {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .features li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .features i {
+            color: var(--secondary-color);
+            margin-right: 0.5rem;
+        }
+
+        /* Resume Section */
+        .resume-section {
+            margin-bottom: 3rem;
+        }
+
+        .resume-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .experience-item:last-child, .education-item:last-child {
+            border-bottom: none;
+        }
+
+        .resume-section h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-section p {
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 12px 30px;
+            background: var(--secondary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #2980b9;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #2980b9;
+        }
+
+        .contact-info {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-right: 1rem;
+            width: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--light-bg);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary-color);
+            color: var(--white);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-bg);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-footer {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-footer a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-footer a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item.right {
+                left: 0;
+            }
+
+            .timeline-item.left::after, .timeline-item.right::after {
+                left: 21px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Sean Patrick J Delos Reyes</h1>
+            <h2>Web Developer | Designer</h2>
+            <p>Creative professional dedicated to building beautiful and functional web experiences</p>
+            <div class="cta-buttons">
+                <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Page -->
+    <section id="about" class="section">
+        <div class="section-title">
+            <h2>About Me</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I am Sean Patrick J Delos Reyes, currently in my 4th year in De La Salle University Dasmarinas taking the Bachelor's Degree in Information Technology specializing in Web Development track. And welcome to my personal portfolio and please feel free to explore and get to know me better inside my portfolio.</p>
+                <p>My passion for web development began during my academic journey, where I discovered the power of creating digital solutions that can make a real impact. I specialize in front-end development, responsive design, and creating seamless user experiences across all devices. I'm constantly learning and staying updated with the latest web technologies to deliver cutting-edge solutions.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://picsum.photos/seed/about/400/400.jpg" alt="About Me" style="border-radius: 8px; width: 100%; max-width: 400px;">
+            </div>
+        </div>
+
+        <div class="section-title" style="margin-top: 4rem;">
+            <h2>Skills Overview</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <i class="fas fa-code"></i>
+                <h3>Web Development</h3>
+                <p>HTML, CSS, JavaScript, React, Vue.js</p>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-paint-brush"></i>
+                <h3>UI/UX Design</h3>
+                <p>Figma, Adobe XD, Sketch</p>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-server"></i>
+                <h3>Backend</h3>
+                <p>Node.js, Python, PHP</p>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-database"></i>
+                <h3>Database</h3>
+                <p>MySQL, MongoDB, PostgreSQL</p>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Responsive Design</h3>
+                <p>Mobile-first approach</p>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-rocket"></i>
+                <h3>Performance</h3>
+                <p>Optimization, SEO</p>
+            </div>
+        </div>
+
+        <div class="section-title" style="margin-top: 4rem;">
+            <h2>Experience Timeline</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>Senior Web Developer</h3>
+                    <p><strong>TechCorp Solutions</strong> | 2020 - Present</p>
+                    <p>Leading web development projects, mentoring junior developers, and implementing cutting-edge web technologies.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>Web Developer</h3>
+                    <p><strong>Digital Innovations</strong> | 2018 - 2020</p>
+                    <p>Developed and maintained client websites, implemented responsive designs, and optimized performance.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>Junior Developer</h3>
+                    <p><strong>Startup Hub</strong> | 2016 - 2018</p>
+                    <p>Assisted in front-end development, bug fixing, and contributed to agile development processes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Page -->
+    <section id="portfolio" class="section" style="background: var(--light-bg);">
+        <div class="section-title">
+            <h2>Portfolio / Projects</h2>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-img" style="background-image: url('https://picsum.photos/seed/project1/400/200.jpg');"></div>
+                <div class="portfolio-content">
+                    <h3>E-commerce Platform</h3>
+                    <p>A modern, responsive e-commerce solution with advanced filtering and payment integration.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+                    <a href="#" class="btn-portfolio">View Details →</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-img" style="background-image: url('https://picsum.photos/seed/project2/400/200.jpg');"></div>
+                <div class="portfolio-content">
+                    <h3>Task Management App</h3>
+                    <p>Collaborative project management tool with real-time updates and team collaboration features.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">Firebase</span>
+                        <span class="tag">Tailwind</span>
+                    </div>
+                    <a href="#" class="btn-portfolio">View Details →</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-img" style="background-image: url('https://picsum.photos/seed/project3/400/200.jpg');"></div>
+                <div class="portfolio-content">
+                    <h3>Health & Fitness Tracker</h3>
+                    <p>Mobile-first application for tracking workouts, nutrition, and health metrics.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">React Native</span>
+                        <span class="tag">GraphQL</span>
+                        <span class="tag">AWS</span>
+                    </div>
+                    <a href="#" class="btn-portfolio">View Details →</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-img" style="background-image: url('https://picsum.photos/seed/project4/400/200.jpg');"></div>
+                <div class="portfolio-content">
+                    <h3>Blog Platform</h3>
+                    <p>Custom blogging platform with rich content editing and social sharing capabilities.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">WordPress</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">MySQL</span>
+                    </div>
+                    <a href="#" class="btn-portfolio">View Details →</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-img" style="background-image: url('https://picsum.photos/seed/project5/400/200.jpg');"></div>
+                <div class="portfolio-content">
+                    <h3>Real Estate Portal</h3>
+                    <p>Comprehensive property listing platform with advanced search and mapping features.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">Angular</span>
+                        <span class="tag">Express</span>
+                        <span class="tag">PostgreSQL</span>
+                    </div>
+                    <a href="#" class="btn-portfolio">View Details →</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-img" style="background-image: url('https://picsum.photos/seed/project6/400/200.jpg');"></div>
+                <div class="portfolio-content">
+                    <h3>Education Platform</h3>
+                    <p>Online learning platform with video streaming, quizzes, and progress tracking.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">Next.js</span>
+                        <span class="tag">Stripe</span>
+                        <span class="tag">Redis</span>
+                    </div>
+                    <a href="#" class="btn-portfolio">View Details →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Page -->
+    <section id="services" class="section">
+        <div class="section-title">
+            <h2>Services</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Web Development</h3>
+                <p>Custom web applications built with modern technologies and best practices.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-palette"></i>
+                <h3>UI/UX Design</h3>
+                <p>User-centered design that creates intuitive and engaging digital experiences.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Responsive Design</h3>
+                <p>Mobile-first approach ensuring your website looks great on all devices.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Graphic Design</h3>
+                <p>Brand identity, logos, and visual assets that represent your business.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-file-alt"></i>
+                <h3>Content Writing</h3>
+                <p>Compelling content that engages your audience and drives conversions.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <h3>Consultation</h3>
+                <p>Expert advice on web strategy, technology selection, and digital transformation.</p>
+            </div>
+        </div>
+
+        <div class="pricing-table">
+            <div class="section-title">
+                <h2>Pricing Plans</h2>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Basic</h3>
+                    <div class="price">$99<span>/month</span></div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> 5 pages website</li>
+                        <li><i class="fas fa-check"></i> Basic SEO</li>
+                        <li><i class="fas fa-check"></i> 1 revision</li>
+                        <li><i class="fas fa-times"></i> E-commerce</li>
+                        <li><i class="fas fa-times"></i> Custom design</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Standard</h3>
+                    <div class="price">$199<span>/month</div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> 15 pages website</li>
+                        <li><i class="fas fa-check"></i> Advanced SEO</li>
+                        <li><i class="fas fa-check"></i> 3 revisions</li>
+                        <li><i class="fas fa-check"></i> E-commerce</li>
+                        <li><i class="fas fa-times"></i> Custom design</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Premium</h3>
+                    <div class="price">$399<span>/month</span></div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Unlimited pages</li>
+                        <li><i class="fas fa-check"></i> Premium SEO</li>
+                        <li><i class="fas fa-check"></i> Unlimited revisions</li>
+                        <li><i class="fas fa-check"></i> E-commerce</li>
+                        <li><i class="fas fa-check"></i> Custom design</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title" style="margin-top: 4rem;">
+            <h2>Process Workflow</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>1. Consultation</h3>
+                    <p>Understanding your requirements, goals, and vision for the project.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>2. Planning</h3>
+                    <p>Creating a detailed project plan, timeline, and technical specifications.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>3. Design & Development</h3>
+                    <p>Building the website with modern technologies and best practices.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>4. Delivery & Feedback</h3>
+                    <p>Launching the website and gathering feedback for improvements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Page -->
+    <section id="resume" class="section" style="background: var(--light-bg);">
+        <div class="section-title">
+            <h2>Resume / CV</h2>
+        </div>
+        
+        <div class="resume-section">
+            <h3>Professional Summary</h3>
+            <p>Experienced web developer with a passion for creating innovative and user-friendly digital solutions. Specialized in full-stack development, with expertise in modern JavaScript frameworks, responsive design, and performance optimization. Proven track record of delivering high-quality projects on time and within budget.</p>
+        </div>
+
+        <div class="resume-section">
+            <h3>Skills</h3>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <i class="fas fa-code"></i>
+                    <h3>Programming Languages</h3>
+                    <p>JavaScript, Python, PHP, HTML, CSS</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-database"></i>
+                    <h3>Frameworks & Libraries</h3>
+                    <p>React, Vue.js, Angular, Node.js, Express</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-server"></i>
+                    <h3>Backend Technologies</h3>
+                    <p>Node.js, Python, PHP, REST APIs</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Tools & Technologies</h3>
+                    <p>Git, Docker, AWS, Firebase, MongoDB</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h3>Experience</h3>
+            <div class="experience-item">
+                <h4>Senior Web Developer</h4>
+                <p><strong>TechCorp Solutions</strong> | 2020 - Present</p>
+                <p><em>Responsibilities:</em></p>
+                <ul>
+                    <li>Lead development of complex web applications</li>
+                    <li>Mentor junior developers and conduct code reviews</li>
+                    <li>Implement and maintain CI/CD pipelines</li>
+                    <li>Collaborate with design and product teams</li>
+                </ul>
+                <p><em>Achievements:</em></p>
+                <ul>
+                    <li>Reduced page load time by 40% through optimization</li>
+                    <li>Delivered 15+ projects on time and within budget</li>
+                    <li>Improved team productivity by implementing new workflows</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h4>Web Developer</h4>
+                <p><strong>Digital Innovations</strong> | 2018 - 2020</p>
+                <p><em>Responsibilities:</em></p>
+                <ul>
+                    <li>Develop and maintain client websites</li>
+                    <li>Implement responsive designs and cross-browser compatibility</li>
+                    <li>Integrate third-party APIs and services</li>
+                    <li>Perform regular maintenance and updates</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h3>Education</h3>
+            <div class="education-item">
+                <h4>Bachelor of Science in Computer Science</h4>
+                <p><strong>University of Technology</strong> | 2014 - 2018</p>
+                <p>GPA: 3.8/4.0 | Relevant coursework: Web Development, Database Systems, Algorithms</p>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h3>Certifications</h3>
+            <ul>
+                <li>Google Certified Professional - Web Developer</li>
+                <li>AWS Certified Developer - Associate</li>
+                <li>React Developer Certification</li>
+            </ul>
+        </div>
+
+        <div class="resume-section">
+            <h3>Awards & Recognitions</h3>
+            <ul>
+                <li>Employee of the Year - TechCorp Solutions (2022)</li>
+                <li>Best Web Project - Digital Innovations (2019)</li>
+                <li>Outstanding Achievement in Web Development (2018)</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="#" class="download-btn">
+                <i class="fas fa-download"></i> Download Resume (PDF)
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Page -->
+    <section id="contact" class="section">
+        <div class="section-title">
+            <h2>Contact</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-form">
+                <h3>Send Me a Message</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>john.doe@example.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+1 (555) 123-4567</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>San Francisco, CA</span>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-footer">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-dribbble"></i></a>
+            </div>
+            <p>&copy; 2023 Sean Patrick J Delos Reyes. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p>Designed with <i class="fas fa-heart" style="color: var(--accent-color);"></i> for creating amazing web experiences</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
