@@ -14,13 +14,14 @@
         }
 
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --text-color: #333;
-            --light-bg: #f8f9fa;
-            --dark-bg: #2c3e50;
+            --primary-color: #000000;
+            --secondary-color: #333333;
+            --accent-color: #666666;
+            --text-color: #333333;
+            --light-bg: #f8f8f8;
+            --dark-bg: #ffffff;
             --white: #ffffff;
+            --black: #000000;
         }
 
         html {
@@ -30,6 +31,7 @@
         body {
             line-height: 1.6;
             color: var(--text-color);
+            background-color: var(--white);
         }
 
         /* Navigation */
@@ -37,10 +39,11 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             z-index: 1000;
             padding: 1rem 0;
+            border-bottom: 1px solid var(--secondary-color);
         }
 
         .nav-container {
@@ -66,19 +69,22 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-color);
+            color: var(--secondary-color);
             font-weight: 500;
             transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
         }
 
         .nav-links a:hover {
-            color: var(--secondary-color);
+            color: var(--primary-color);
         }
 
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://picsum.photos/seed/hero/1920/1080.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://picsum.photos/seed/hero/1920/1080.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -93,6 +99,8 @@
             font-size: 3.5rem;
             margin-bottom: 1rem;
             animation: fadeInUp 1s ease;
+            font-weight: 300;
+            letter-spacing: 2px;
         }
 
         .hero-content h2 {
@@ -101,6 +109,8 @@
             animation: fadeInUp 1s ease 0.2s;
             opacity: 0;
             animation-fill-mode: forwards;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
 
         .hero-content p {
@@ -109,6 +119,9 @@
             animation: fadeInUp 1s ease 0.4s;
             opacity: 0;
             animation-fill-mode: forwards;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-buttons {
@@ -126,15 +139,18 @@
             font-weight: 600;
             transition: all 0.3s;
             display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--secondary-color);
+            border: 2px solid var(--white);
             color: var(--white);
         }
 
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
         .btn-primary:hover {
-            background: #2980b9;
+            background: var(--primary-color);
+            color: var(--white);
             transform: translateY(-3px);
         }
 
@@ -165,6 +181,8 @@
             font-size: 2.5rem;
             color: var(--primary-color);
             margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: 2px;
         }
 
         .section-title::after {
@@ -174,7 +192,7 @@
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
-            height: 3px;
+            height: 2px;
             background: var(--secondary-color);
         }
 
@@ -189,6 +207,8 @@
         .about-text p {
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
+            color: var(--secondary-color);
+            line-height: 1.8;
         }
 
         .skills-grid {
@@ -203,68 +223,13 @@
             padding: 1.5rem;
             border-radius: 8px;
             text-align: center;
+            border: 1px solid var(--secondary-color);
         }
 
         .skill-item i {
             font-size: 2rem;
-            color: var(--secondary-color);
+            color: var(--primary-color);
             margin-bottom: 1rem;
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 2rem auto;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            background-color: var(--secondary-color);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
-        }
-
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            background-color: inherit;
-            width: 50%;
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            right: -17px;
-            background-color: var(--white);
-            border: 4px solid var(--secondary-color);
-            top: 15px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .timeline-item.left {
-            left: 0;
-        }
-
-        .timeline-item.right {
-            left: 50%;
-        }
-
-        .timeline-item.right::after {
-            left: -17px;
-        }
-
-        .timeline-content {
-            padding: 20px 30px;
-            background-color: var(--white);
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         /* Portfolio Section */
@@ -279,12 +244,14 @@
             background: var(--white);
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s;
+            border: 1px solid var(--secondary-color);
         }
 
         .portfolio-item:hover {
             transform: translateY(-10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
         .portfolio-img {
@@ -300,11 +267,12 @@
         .portfolio-content h3 {
             margin-bottom: 1rem;
             color: var(--primary-color);
+            font-weight: 500;
         }
 
         .portfolio-content p {
             margin-bottom: 1rem;
-            color: #666;
+            color: var(--secondary-color);
         }
 
         .portfolio-tags {
@@ -319,122 +287,23 @@
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.85rem;
+            color: var(--secondary-color);
+            border: 1px solid var(--secondary-color);
         }
 
         .btn-portfolio {
             display: inline-block;
             margin-top: 1rem;
-            color: var(--secondary-color);
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
         }
 
         .btn-portfolio:hover {
             text-decoration: underline;
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .service-card i {
-            font-size: 3rem;
-            color: var(--secondary-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .service-card h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .pricing-table {
-            margin-top: 4rem;
-        }
-
-        .pricing-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .pricing-card {
-            background: var(--white);
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        .pricing-card.featured {
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.3);
-        }
-
-        .pricing-card.featured::before {
-            content: 'Popular';
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            background: var(--accent-color);
-            color: var(--white);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        .pricing-card h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .price {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-        }
-
-        .price span {
-            font-size: 1rem;
-            font-weight: normal;
-        }
-
-        .features {
-            list-style: none;
-            margin: 1.5rem 0;
-            text-align: left;
-        }
-
-        .features li {
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .features i {
-            color: var(--secondary-color);
-            margin-right: 0.5rem;
         }
 
         /* Resume Section */
@@ -446,6 +315,7 @@
             color: var(--primary-color);
             margin-bottom: 1.5rem;
             font-size: 1.5rem;
+            font-weight: 500;
         }
 
         .experience-item, .education-item {
@@ -461,27 +331,31 @@
         .resume-section h4 {
             color: var(--secondary-color);
             margin-bottom: 0.5rem;
+            font-weight: 500;
         }
 
         .resume-section p {
             margin-bottom: 0.5rem;
-            color: #666;
+            color: var(--secondary-color);
         }
 
         .download-btn {
             display: inline-block;
             margin-top: 2rem;
             padding: 12px 30px;
-            background: var(--secondary-color);
+            background: var(--primary-color);
             color: var(--white);
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
             transition: background 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
         }
 
         .download-btn:hover {
-            background: #2980b9;
+            background: var(--secondary-color);
         }
 
         /* Contact Section */
@@ -496,7 +370,8 @@
             background: var(--white);
             padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--secondary-color);
         }
 
         .form-group {
@@ -507,15 +382,17 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
+            color: var(--primary-color);
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--secondary-color);
             border-radius: 4px;
             font-size: 1rem;
+            background-color: var(--light-bg);
         }
 
         .form-group textarea {
@@ -524,7 +401,7 @@
         }
 
         .submit-btn {
-            background: var(--secondary-color);
+            background: var(--primary-color);
             color: var(--white);
             border: none;
             padding: 12px 30px;
@@ -532,22 +409,27 @@
             font-weight: 600;
             cursor: pointer;
             transition: background 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
         }
 
         .submit-btn:hover {
-            background: #2980b9;
+            background: var(--secondary-color);
         }
 
         .contact-info {
             background: var(--white);
             padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--secondary-color);
         }
 
         .contact-info h3 {
             color: var(--primary-color);
             margin-bottom: 1.5rem;
+            font-weight: 500;
         }
 
         .contact-item {
@@ -558,7 +440,7 @@
 
         .contact-item i {
             font-size: 1.5rem;
-            color: var(--secondary-color);
+            color: var(--primary-color);
             margin-right: 1rem;
             width: 30px;
         }
@@ -580,20 +462,22 @@
             justify-content: center;
             text-decoration: none;
             transition: all 0.3s;
+            border: 1px solid var(--secondary-color);
         }
 
         .social-links a:hover {
-            background: var(--secondary-color);
+            background: var(--primary-color);
             color: var(--white);
             transform: translateY(-5px);
         }
 
         /* Footer */
         .footer {
-            background: var(--dark-bg);
+            background: var(--black);
             color: var(--white);
             padding: 3rem 2rem;
             text-align: center;
+            margin-top: 5rem;
         }
 
         .footer-content {
@@ -615,7 +499,7 @@
         }
 
         .social-footer a:hover {
-            color: var(--secondary-color);
+            color: var(--light-bg);
         }
 
         .footer-bottom {
@@ -650,24 +534,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .timeline::after {
-                left: 31px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-
-            .timeline-item.right {
-                left: 0;
-            }
-
-            .timeline-item.left::after, .timeline-item.right::after {
-                left: 21px;
-            }
-
             .contact-container {
                 grid-template-columns: 1fr;
             }
@@ -687,7 +553,6 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#services">Services</a></li>
                 <li><a href="#resume">Resume</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -699,7 +564,7 @@
         <div class="hero-content">
             <h1>Sean Patrick J Delos Reyes</h1>
             <h2>Web Developer | Designer</h2>
-            <p>Creative professional dedicated to building beautiful and functional web experiences</p>
+            <p>I am Sean Patrick J Delos Reyes, currently in my 4th year in De La Salle University Dasmarinas taking the Bachelor's Degree in Information Technology specializing in Web Development track. And welcome to my personal portfolio and please feel free to explore and get to know me better inside my portfolio.</p>
             <div class="cta-buttons">
                 <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
                 <a href="#contact" class="btn btn-outline">Contact Me</a>
@@ -718,7 +583,7 @@
                 <p>My passion for web development began during my academic journey, where I discovered the power of creating digital solutions that can make a real impact. I specialize in front-end development, responsive design, and creating seamless user experiences across all devices. I'm constantly learning and staying updated with the latest web technologies to deliver cutting-edge solutions.</p>
             </div>
             <div class="about-image">
-                <img src="https://picsum.photos/seed/about/400/400.jpg" alt="About Me" style="border-radius: 8px; width: 100%; max-width: 400px;">
+                <img src="https://picsum.photos/seed/about/400/400.jpg" alt="About Me" style="border-radius: 8px; width: 100%; max-width: 400px; border: 1px solid var(--secondary-color);">
             </div>
         </div>
 
@@ -755,33 +620,6 @@
                 <i class="fas fa-rocket"></i>
                 <h3>Performance</h3>
                 <p>Optimization, SEO</p>
-            </div>
-        </div>
-
-        <div class="section-title" style="margin-top: 4rem;">
-            <h2>Experience Timeline</h2>
-        </div>
-        <div class="timeline">
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <h3>Senior Web Developer</h3>
-                    <p><strong>TechCorp Solutions</strong> | 2020 - Present</p>
-                    <p>Leading web development projects, mentoring junior developers, and implementing cutting-edge web technologies.</p>
-                </div>
-            </div>
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <h3>Web Developer</h3>
-                    <p><strong>Digital Innovations</strong> | 2018 - 2020</p>
-                    <p>Developed and maintained client websites, implemented responsive designs, and optimized performance.</p>
-                </div>
-            </div>
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <h3>Junior Developer</h3>
-                    <p><strong>Startup Hub</strong> | 2016 - 2018</p>
-                    <p>Assisted in front-end development, bug fixing, and contributed to agile development processes.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -873,119 +711,6 @@
         </div>
     </section>
 
-    <!-- Services Page -->
-    <section id="services" class="section">
-        <div class="section-title">
-            <h2>Services</h2>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-laptop-code"></i>
-                <h3>Web Development</h3>
-                <p>Custom web applications built with modern technologies and best practices.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-palette"></i>
-                <h3>UI/UX Design</h3>
-                <p>User-centered design that creates intuitive and engaging digital experiences.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-mobile-alt"></i>
-                <h3>Responsive Design</h3>
-                <p>Mobile-first approach ensuring your website looks great on all devices.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-paint-brush"></i>
-                <h3>Graphic Design</h3>
-                <p>Brand identity, logos, and visual assets that represent your business.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-file-alt"></i>
-                <h3>Content Writing</h3>
-                <p>Compelling content that engages your audience and drives conversions.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-chalkboard-teacher"></i>
-                <h3>Consultation</h3>
-                <p>Expert advice on web strategy, technology selection, and digital transformation.</p>
-            </div>
-        </div>
-
-        <div class="pricing-table">
-            <div class="section-title">
-                <h2>Pricing Plans</h2>
-            </div>
-            <div class="pricing-cards">
-                <div class="pricing-card">
-                    <h3>Basic</h3>
-                    <div class="price">$99<span>/month</span></div>
-                    <ul class="features">
-                        <li><i class="fas fa-check"></i> 5 pages website</li>
-                        <li><i class="fas fa-check"></i> Basic SEO</li>
-                        <li><i class="fas fa-check"></i> 1 revision</li>
-                        <li><i class="fas fa-times"></i> E-commerce</li>
-                        <li><i class="fas fa-times"></i> Custom design</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary">Get Started</a>
-                </div>
-                <div class="pricing-card featured">
-                    <h3>Standard</h3>
-                    <div class="price">$199<span>/month</div>
-                    <ul class="features">
-                        <li><i class="fas fa-check"></i> 15 pages website</li>
-                        <li><i class="fas fa-check"></i> Advanced SEO</li>
-                        <li><i class="fas fa-check"></i> 3 revisions</li>
-                        <li><i class="fas fa-check"></i> E-commerce</li>
-                        <li><i class="fas fa-times"></i> Custom design</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary">Get Started</a>
-                </div>
-                <div class="pricing-card">
-                    <h3>Premium</h3>
-                    <div class="price">$399<span>/month</span></div>
-                    <ul class="features">
-                        <li><i class="fas fa-check"></i> Unlimited pages</li>
-                        <li><i class="fas fa-check"></i> Premium SEO</li>
-                        <li><i class="fas fa-check"></i> Unlimited revisions</li>
-                        <li><i class="fas fa-check"></i> E-commerce</li>
-                        <li><i class="fas fa-check"></i> Custom design</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary">Get Started</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="section-title" style="margin-top: 4rem;">
-            <h2>Process Workflow</h2>
-        </div>
-        <div class="timeline">
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <h3>1. Consultation</h3>
-                    <p>Understanding your requirements, goals, and vision for the project.</p>
-                </div>
-            </div>
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <h3>2. Planning</h3>
-                    <p>Creating a detailed project plan, timeline, and technical specifications.</p>
-                </div>
-            </div>
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <h3>3. Design & Development</h3>
-                    <p>Building the website with modern technologies and best practices.</p>
-                </div>
-            </div>
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <h3>4. Delivery & Feedback</h3>
-                    <p>Launching the website and gathering feedback for improvements.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Resume Page -->
     <section id="resume" class="section" style="background: var(--light-bg);">
         <div class="section-title">
@@ -998,87 +723,139 @@
         </div>
 
         <div class="resume-section">
-            <h3>Skills</h3>
+            <h3>Technical Skills</h3>
             <div class="skills-grid">
                 <div class="skill-item">
                     <i class="fas fa-code"></i>
                     <h3>Programming Languages</h3>
-                    <p>JavaScript, Python, PHP, HTML, CSS</p>
+                    <p>JavaScript, Python, PHP, HTML5, CSS3, TypeScript</p>
                 </div>
                 <div class="skill-item">
                     <i class="fas fa-database"></i>
                     <h3>Frameworks & Libraries</h3>
-                    <p>React, Vue.js, Angular, Node.js, Express</p>
+                    <p>React, Vue.js, Angular, Node.js, Express, Next.js</p>
                 </div>
                 <div class="skill-item">
                     <i class="fas fa-server"></i>
                     <h3>Backend Technologies</h3>
-                    <p>Node.js, Python, PHP, REST APIs</p>
+                    <p>Node.js, Python (Django/Flask), PHP (Laravel), REST APIs</p>
                 </div>
                 <div class="skill-item">
                     <i class="fas fa-mobile-alt"></i>
-                    <h3>Tools & Technologies</h3>
-                    <p>Git, Docker, AWS, Firebase, MongoDB</p>
+                    <h3>Database Management</h3>
+                    <p>MySQL, MongoDB, PostgreSQL, Redis, Firebase</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>UI/UX Design</h3>
+                    <p>Figma, Adobe XD, Sketch, Photoshop, Illustrator</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Development Tools</h3>
+                    <p>Git, Docker, AWS, Vercel, Netlify, VS Code</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Development</h3>
+                    <p>React Native, Flutter, Progressive Web Apps</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Security</h3>
+                    <p>Authentication, Authorization, Data Protection</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Analytics & SEO</h3>
+                    <p>Google Analytics, SEO Optimization, Performance Metrics</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-users"></i>
+                    <h3>Team Collaboration</h3>
+                    <p>Agile Methodology, Scrum, Team Leadership, Code Review</p>
                 </div>
             </div>
         </div>
 
         <div class="resume-section">
-            <h3>Experience</h3>
-            <div class="experience-item">
-                <h4>Senior Web Developer</h4>
-                <p><strong>TechCorp Solutions</strong> | 2020 - Present</p>
-                <p><em>Responsibilities:</em></p>
-                <ul>
-                    <li>Lead development of complex web applications</li>
-                    <li>Mentor junior developers and conduct code reviews</li>
-                    <li>Implement and maintain CI/CD pipelines</li>
-                    <li>Collaborate with design and product teams</li>
-                </ul>
-                <p><em>Achievements:</em></p>
-                <ul>
-                    <li>Reduced page load time by 40% through optimization</li>
-                    <li>Delivered 15+ projects on time and within budget</li>
-                    <li>Improved team productivity by implementing new workflows</li>
-                </ul>
-            </div>
-            <div class="experience-item">
-                <h4>Web Developer</h4>
-                <p><strong>Digital Innovations</strong> | 2018 - 2020</p>
-                <p><em>Responsibilities:</em></p>
-                <ul>
-                    <li>Develop and maintain client websites</li>
-                    <li>Implement responsive designs and cross-browser compatibility</li>
-                    <li>Integrate third-party APIs and services</li>
-                    <li>Perform regular maintenance and updates</li>
-                </ul>
+            <h3>Soft Skills</h3>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <i class="fas fa-comments"></i>
+                    <h3>Communication</h3>
+                    <p>Clear and effective verbal/written communication</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <h3>Problem-Solving</h3>
+                    <p>Analytical thinking and creative solutions</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-users"></i>
+                    <h3>Teamwork</h3>
+                    <p>Collaborative approach and team player</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Leadership</h3>
+                    <p>Mentoring and guiding team members</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-clock"></i>
+                    <h3>Time Management</h3>
+                    <p>Prioritization and deadline adherence</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Adaptability</h3>
+                    <p>Quick learning and flexibility</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-brain"></i>
+                    <h3>Critical Thinking</h3>
+                    <p>Logical reasoning and decision making</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Creativity</h3>
+                    <p>Innovative ideas and design thinking</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-check-double"></i>
+                    <h3>Attention to Detail</h3>
+                    <p>Precision and quality assurance</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Customer Service</h3>
+                    <p>User-focused approach and support</p>
+                </div>
             </div>
         </div>
 
         <div class="resume-section">
             <h3>Education</h3>
             <div class="education-item">
-                <h4>Bachelor of Science in Computer Science</h4>
-                <p><strong>University of Technology</strong> | 2014 - 2018</p>
-                <p>GPA: 3.8/4.0 | Relevant coursework: Web Development, Database Systems, Algorithms</p>
+                <h4>De La Salle University Dasmarinas</h4>
+                <p><strong>Bachelor of Science in Computer Science</strong> | 2022 - Present</p>
             </div>
-        </div>
-
-        <div class="resume-section">
-            <h3>Certifications</h3>
-            <ul>
-                <li>Google Certified Professional - Web Developer</li>
-                <li>AWS Certified Developer - Associate</li>
-                <li>React Developer Certification</li>
-            </ul>
+            <div class="education-item">
+                <h4>Theresian School of Cavite</h4>
+                <p><strong>High School Diploma</strong> | 2020 - 2022</p>
+            </div>
+            <div class="education-item">
+                <h4>Jesus Good Shepherd School</h4>
+                <p><strong>Junior High School</strong> | 2016 - 2019</p>
+            </div>
         </div>
 
         <div class="resume-section">
             <h3>Awards & Recognitions</h3>
             <ul>
-                <li>Employee of the Year - TechCorp Solutions (2022)</li>
-                <li>Best Web Project - Digital Innovations (2019)</li>
-                <li>Outstanding Achievement in Web Development (2018)</li>
+                <li>With honors in Theresian School of Cavite</li>
+                <li>Deans lister</li>
+                <li>2nd place in layouting journalism</li>
             </ul>
         </div>
 
@@ -1121,15 +898,15 @@
                 <h3>Get in Touch</h3>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
-                    <span>john.doe@example.com</span>
+                    <span>senapatrickdelosreyes03@gmail.com</span>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
-                    <span>+1 (555) 123-4567</span>
+                    <span>+639763520318</span>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span>San Francisco, CA</span>
+                    <span>Bacoor City, Cavite</span>
                 </div>
                 
                 <div class="social-links">
@@ -1153,7 +930,7 @@
             </div>
             <p>&copy; 2023 Sean Patrick J Delos Reyes. All rights reserved.</p>
             <div class="footer-bottom">
-                <p>Designed with <i class="fas fa-heart" style="color: var(--accent-color);"></i> for creating amazing web experiences</p>
+                <p>Designed with <i class="fas fa-heart" style="color: var(--light-bg);"></i> for creating amazing web experiences</p>
             </div>
         </div>
     </footer>
